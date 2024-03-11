@@ -1,12 +1,9 @@
 const { Router } = require('express');
+const { darHora } = require('../controllers/tasks.controller')
 const pool = require('../db');
 const router = Router();
 
-router.get('/', async(req,res) => {
-    const result = await pool.query('SELECT NOW()');
-    console.log(result);
-    res.json(result.rows[0].now);
-})
+router.get('/', darHora);
 
 router.post('/', (req,res) => {
     res.send('Hello world');
