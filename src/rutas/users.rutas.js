@@ -1,13 +1,11 @@
 const { Router } = require('express');
-const { darHora } = require('../controllers/tasks.controller')
+const { darHora, insertarUsuario } = require('../controllers/users.controller')
 const pool = require('../db');
 const router = Router();
 
 router.get('/', darHora);
 
-router.post('/', (req,res) => {
-    res.send('Hello world');
-})
+router.post('/usuario', insertarUsuario);
 
 router.delete('/', (req,res) => {
     res.send('Hello world');

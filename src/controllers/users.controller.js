@@ -6,7 +6,7 @@ const darHora =  async(req,res) => {
     res.json(result.rows[0].now);
 }
 
-const insertarUsuario = async(req,res) =>{
+const insertarUsuario = async(req,res,next) =>{
     const { id_usuario, nombre, apellido, correo, telefono, fecha_nacimiento, genero} = req.body;
 
     try {
@@ -19,11 +19,11 @@ const insertarUsuario = async(req,res) =>{
             genero
         ]);
     } catch (error) {
-        res.json({error : error.message});
+        next(error);
     }
 }
 
 module.exports = {
     darHora,
-    recibirUsuario: insertarUsuario
+    insertarUsuario
 }
